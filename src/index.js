@@ -54,6 +54,7 @@ async function handleHuddleChange(event, env) {
 
     const huddleKey = `huddle:${callId}`;
 
+    console.log('user', JSON.stringify(user));
     if (huddleState === 'in_a_huddle') {
         // User joined huddle
         const existingData = await env.HUDDLES.get(huddleKey);
