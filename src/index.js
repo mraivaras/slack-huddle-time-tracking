@@ -33,9 +33,11 @@ export default {
         }
 
         // Handle events
+        console.log('payload', payload);
         if (payload.type === 'event_callback') {
             const event = payload.event;
 
+            console.log('event aaaa', event);
             if (event.type === 'user_huddle_changed') {
                 await handleHuddleChange(event, env);
             }
