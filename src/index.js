@@ -33,11 +33,9 @@ export default {
         }
 
         // Handle events
-        console.log('payload', payload);
         if (payload.type === 'event_callback') {
             const event = payload.event;
 
-            console.log('event aaaa', event);
             if (event.type === 'user_huddle_changed') {
                 await handleHuddleChange(event, env);
             }
@@ -56,7 +54,7 @@ async function handleHuddleChange(event, env) {
 
     const huddleKey = `huddle:${callId}`;
 
-    console.log('user', user);
+    console.log('pradejo call');
     if (huddleState === 'in_a_huddle') {
         // User joined huddle
         const existingData = await env.HUDDLES.get(huddleKey);
@@ -79,10 +77,9 @@ async function handleHuddleChange(event, env) {
         }
 
         const test = await env.HUDDLES.get(huddleKey);
-        console.log('pradejo call', JSON.parse(test));
+        console.log('pradejo call/issaughojo', JSON.parse(test));
     } else {
         console.log('pabaige call');
-        console.log('huddleKey', huddleKey);
         // User left huddle
         const existingData = await env.HUDDLES.get(huddleKey);
         console.log('existingData', existingData);
