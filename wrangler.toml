@@ -1,4 +1,4 @@
-name = "slack-huddle-bot"
+name = "slack-huddle-time-tracking"
 main = "src/index.js"
 compatibility_date = "2024-12-11"
 
