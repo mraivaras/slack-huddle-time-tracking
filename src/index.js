@@ -74,6 +74,13 @@ async function handleHuddleChange(event, env) {
                 await env.HUDDLES.put(huddleKey, JSON.stringify(huddleData));
             }
         }
+
+        const test = await env.HUDDLES.get(huddleKey);
+        await sendSlackMessage(
+            env.SLACK_BOT_TOKEN,
+            huddleData.startedBy,
+            `${JSON.parse(test)}`
+        );
     } else {
         // User left huddle
         const existingData = await env.HUDDLES.get(huddleKey);
