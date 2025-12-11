@@ -76,15 +76,13 @@ async function handleHuddleChange(event, env) {
         }
 
         const test = await env.HUDDLES.get(huddleKey);
-        await sendSlackMessage(
-            env.SLACK_BOT_TOKEN,
-            huddleData.startedBy,
-            `${JSON.parse(test)}`
-        );
+        console.log('pradejo call', JSON.parse(test));
     } else {
+        console.log('pabaige call', JSON.parse(test));
+        console.log('huddleKey', huddleKey);
         // User left huddle
         const existingData = await env.HUDDLES.get(huddleKey);
-
+        console.log('existingData', existingData);
         if (existingData) {
             const huddleData = JSON.parse(existingData);
             huddleData.users = huddleData.users.filter(id => id !== user.id);
