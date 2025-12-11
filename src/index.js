@@ -50,7 +50,6 @@ async function handleHuddleChange(event, env) {
     const huddleState = user.profile?.huddle_state;
     const callId = user.profile?.huddle_state_call_id;
 
-    if (!callId) return;
 
     const huddleKey = `huddle:${callId}`;
 
