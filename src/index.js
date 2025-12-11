@@ -46,6 +46,7 @@ export default {
 };
 
 async function handleHuddleChange(event, env) {
+    try {
     const user = event.user;
     const huddleState = user.profile?.huddle_state;
     const callId = user.profile?.huddle_state_call_id;
@@ -107,6 +108,8 @@ async function handleHuddleChange(event, env) {
                 await env.HUDDLES.put(huddleKey, JSON.stringify(huddleData));
             }
         }
+    } } catch (error) {
+        console.log('Error handling huddle change:', error);
     }
 }
 
