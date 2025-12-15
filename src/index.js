@@ -90,30 +90,28 @@ async function handleHuddleChange(event, env) {
         if (existingData) {
             const huddleData = JSON.parse(existingData);
 
-            console.log('huddleData', huddleData)
-            if (huddleData.users.length === 0) {
-                console.log('skaiciavimas')
-                // Huddle ended - calculate duration and notify
-                const endTime = Date.now();
-                const duration = Math.floor((endTime - huddleData.startTime) / 1000);
-                const durationFormatted = formatDuration(duration);
-                console.log('endTime', endTime);
-                console.log('duration', duration);
-                console.log('durationFormatted', durationFormatted);
+        console.log('huddleData', huddleData)
+            console.log('skaiciavimas')
+            // Huddle ended - calculate duration and notify
+            const endTime = Date.now();
+            const duration = Math.floor((endTime - huddleData.startTime) / 1000);
+            const durationFormatted = formatDuration(duration);
+            console.log('endTime', endTime);
+            console.log('duration', duration);
+            console.log('durationFormatted', durationFormatted);
 
-                // Send message to user
-                await sendSlackMessage(
-                    env.SLACK_BOT_TOKEN,
-                    huddleData.startedBy,
-                    `📞 Your huddle just ended! Duration: *${durationFormatted}*`
-                );
+            // Send message to user
+            await sendSlackMessage(
+                env.SLACK_BOT_TOKEN,
+                huddleData.startedBy,
+                `📞 Your huddle just ended! Duration: *${durationFormatted}*`
+            );
 
-                // Clean up
-                await env.HUDDLES.delete(user.id);
-            } else {
-                // Update huddle with remaining users
-                await env.HUDDLES.put(user.id, JSON.stringify(huddleData));
-            }
+            // Clean up
+            await env.HUDDLES.delete(user.id);
+        } else {
+            // Update huddle with remaining users
+            await env.HUDDLES.put(user.id, JSON.stringify(huddleData));
         }
     } } catch (error) {
         console.log('Error handling huddle change:', error);
