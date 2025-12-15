@@ -90,8 +90,9 @@ async function handleHuddleChange(event, env) {
         if (existingData) {
             const huddleData = JSON.parse(existingData);
 
+            console.log('huddleData', huddleData)
             if (huddleData.users.length === 0) {
-                console.log('skaiciavimas', huddleData)
+                console.log('skaiciavimas')
                 // Huddle ended - calculate duration and notify
                 const endTime = Date.now();
                 const duration = Math.floor((endTime - huddleData.startTime) / 1000);
