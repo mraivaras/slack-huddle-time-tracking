@@ -106,7 +106,7 @@ async function handleHuddleChange(event, env) {
             await sendSlackMessage(
                 env.SLACK_BOT_TOKEN,
                 huddleData.startedBy,
-                `Your huddle just ended! Duration: *${durationFormatted}* <https://redmine.tribepayments.com/time_entries/new?back_url=%2Fprojects%2Fisac-iss%2Ftime_entries&time_entry%5Bactivity_id%5D=66&time_entry%5Bissue_id%5D=&time_entry%5Bproject_id%5D=&time_entry%5Bspent_on%5D=${date}&time_entry%5Bhours%5D=${hours}&time_entry%5Bcomments%5D=Slack|Log Time>`
+                `Your huddle just ended! Duration: *${durationFormatted}* <https://redmine.tribepayments.com/time_entries/new?back_url=%2Fprojects%2Fisac-iss%2Ftime_entries&time_entry%5Bactivity_id%5D=66&time_entry%5Bissue_id%5D=&time_entry%5Bproject_id%5D=&time_entry%5Bspent_on%5D=${date}&time_entry%5Bhours%5D=${hours}&time_entry%5Bcomments%5D=Slack%20huddle%20|Log Time>`
             );
 
             // Clean up
