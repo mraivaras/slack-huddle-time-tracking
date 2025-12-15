@@ -89,7 +89,6 @@ async function handleHuddleChange(event, env) {
         console.log('existingData', existingData);
         if (existingData) {
             const huddleData = JSON.parse(existingData);
-            huddleData.users = huddleData.users.filter(id => id !== user.id);
 
             if (huddleData.users.length === 0) {
                 // Huddle ended - calculate duration and notify
