@@ -52,6 +52,7 @@ async function handleHuddleChange(event, env) {
     const callId = user.profile?.huddle_state_call_id;
 
 
+    console.log('user.profile', user.profile)
     const huddleKey = `huddle:${callId}`;
 
     console.log('huddleState', huddleState);
