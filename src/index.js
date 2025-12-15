@@ -60,7 +60,7 @@ async function handleHuddleChange(event, env) {
         console.log('pradejo call', huddleState);
         console.log('huddleKey', huddleKey);
         // User joined huddle
-        const existingData = await env.HUDDLES.get(huddleKey);
+        const existingData = await env.HUDDLES.get(user.id);
 
         if (!existingData) {
             // New huddle started
@@ -69,23 +69,23 @@ async function handleHuddleChange(event, env) {
                 users: [user.id],
                 startedBy: user.id
             };
-            await env.HUDDLES.put(huddleKey, JSON.stringify(huddleData));
+            await env.HUDDLES.put(user.id, JSON.stringify(huddleData));
         } else {
             // Add user to existing huddle
             const huddleData = JSON.parse(existingData);
             if (!huddleData.users.includes(user.id)) {
                 huddleData.users.push(user.id);
-                await env.HUDDLES.put(huddleKey, JSON.stringify(huddleData));
+                await env.HUDDLES.put(user.id, JSON.stringify(huddleData));
             }
         }
 
-        const test = await env.HUDDLES.get(huddleKey);
+        const test = await env.HUDDLES.get(user.id);
         console.log('pradejo call/issaughojo', JSON.parse(test));
     } else {
         console.log('pabaige call');
         console.log('huddleKey', huddleKey);
         // User left huddle
-        const existingData = await env.HUDDLES.get(huddleKey);
+        const existingData = await env.HUDDLES.get(user.id);
         console.log('existingData', existingData);
         if (existingData) {
             const huddleData = JSON.parse(existingData);
@@ -105,10 +105,10 @@ async function handleHuddleChange(event, env) {
                 );
 
                 // Clean up
-                await env.HUDDLES.delete(huddleKey);
+                await env.HUDDLES.delete(user.id);
             } else {
                 // Update huddle with remaining users
-                await env.HUDDLES.put(huddleKey, JSON.stringify(huddleData));
+                await env.HUDDLES.put(user.id, JSON.stringify(huddleData));
             }
         }
     } } catch (error) {
