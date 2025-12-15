@@ -97,7 +97,7 @@ async function handleHuddleChange(event, env) {
             const duration = Math.floor((endTime - huddleData.startTime) / 1000);
             const durationFormatted = formatDuration(duration);
             const date = new Date(huddleData.startTime).toISOString().split('T')[0];
-            const hours = Number((durationInSeconds / 3600).toFixed(4));
+            const hours = Number((duration / 3600).toFixed(4));
             console.log('endTime', endTime);
             console.log('duration', duration);
             console.log('durationFormatted', durationFormatted);
