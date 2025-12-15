@@ -54,8 +54,10 @@ async function handleHuddleChange(event, env) {
 
     const huddleKey = `huddle:${callId}`;
 
-    console.log('pradejo call');
+    console.log('huddleState', huddleState);
     if (huddleState === 'in_a_huddle') {
+        console.log('pradejo call', huddleState);
+        console.log('huddleKey', huddleKey);
         // User joined huddle
         const existingData = await env.HUDDLES.get(huddleKey);
 
@@ -80,6 +82,7 @@ async function handleHuddleChange(event, env) {
         console.log('pradejo call/issaughojo', JSON.parse(test));
     } else {
         console.log('pabaige call');
+        console.log('huddleKey', huddleKey);
         // User left huddle
         const existingData = await env.HUDDLES.get(huddleKey);
         console.log('existingData', existingData);
