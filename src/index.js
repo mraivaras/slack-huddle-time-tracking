@@ -91,10 +91,14 @@ async function handleHuddleChange(event, env) {
             const huddleData = JSON.parse(existingData);
 
             if (huddleData.users.length === 0) {
+                console.log('skaiciavimas', huddleData)
                 // Huddle ended - calculate duration and notify
                 const endTime = Date.now();
                 const duration = Math.floor((endTime - huddleData.startTime) / 1000);
                 const durationFormatted = formatDuration(duration);
+                console.log('endTime', endTime);
+                console.log('duration', duration);
+                console.log('durationFormatted', durationFormatted);
 
                 // Send message to user
                 await sendSlackMessage(
